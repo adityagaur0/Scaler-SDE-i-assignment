@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.2.6 <4.0.0'
+  sdk: '>=3.0.6 <4.0.0'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -48,6 +48,15 @@ dependencies:
   lottie: ^3.1.0
   flutter_screenutil: ^5.9.0
   shimmer: ^3.0.0
+  google_sign_in: ^6.2.1
+  get_storage: ^2.1.1
+  image_picker: ^1.0.7
+  firebase_storage: ^11.6.9
+  cached_network_image: ^3.3.1
+  popover: ^0.3.0
+  pdf: ^3.10.8
+  open_file: ^3.3.2
+  path_provider: ^2.1.2
 
 dev_dependencies:
   flutter_test:
@@ -73,6 +82,7 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - assets/logo/
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

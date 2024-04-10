@@ -1,6 +1,11 @@
+import 'package:dashboard/src/common/widgets/circularImage/circular_image.dart';
+import 'package:dashboard/src/common/widgets/loaders/shimmer.dart';
 import 'package:dashboard/src/features/core/controllers/dashbord_controller.dart';
+import 'package:dashboard/src/features/core/controllers/user_controller/user_controller.dart';
+import 'package:dashboard/src/utils/constants/imges_string.dart';
 import 'package:dashboard/src/utils/device/responsive.dart';
 import 'package:dashboard/src/utils/constants/constants.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -12,7 +17,7 @@ class Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(DashboardController());
+    // final controller = Get.put(DashboardController());
     return Row(
       children: [
         if (!Responsive.isDesktop(context))
@@ -24,7 +29,7 @@ class Header extends StatelessWidget {
           ),
         if (!Responsive.isMobile(context))
           Spacer(flex: Responsive.isDesktop(context) ? 2 : 1),
-        const Expanded(child: SearchField()),
+        // const Expanded(child: SearchField()),
         ProfileCard(),
         // Expanded(
         //   child: TextFormField(
@@ -161,13 +166,15 @@ class ProfileCard extends StatelessWidget {
   ProfileCard({
     Key? key,
   }) : super(key: key);
-  final controller = Get.put(DashboardController());
+  final userController = UserController.instance;
+  final _auth = FirebaseAuth.instance;
+  // final controller = Get.put(DashboardController());
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        _showProfileMenu(context);
-        controller.fetchMentorDetials();
+        // _showProfileMenu(context);
+        // controller.fetchMentorDetials();
       },
       child: Container(
         margin: const EdgeInsets.only(left: defaultPadding),
@@ -182,111 +189,69 @@ class ProfileCard extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Icon(Icons.person),
+            Obx(() {
+              final networkImage = _auth.currentUser
+                  ?.photoURL; // Using '?.' to safely access photoURL
+              final image = networkImage?.isNotEmpty ?? false
+                  ? TImages.kMemoji1
+                  : TImages.kMemoji1; // Using '?.' and '??' for null safety
+
+              return userController.imageUplaoding.value
+                  ? const TShimmerEffect(
+                      width: 40,
+                      height: 40,
+                      radius: 20,
+                    )
+                  : TCircularImage(
+                      image: image,
+                      width: 30,
+                      height: 30,
+                      isNetworkImage: networkImage != null &&
+                          networkImage
+                              .isNotEmpty, // Added null check before accessing isNotEmpty
+                    );
+            }),
             if (!Responsive.isMobile(context))
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: defaultPadding / 2),
-                child: Text("Mentor: ${controller.mentorname.text}"),
+                child: Text("${_auth.currentUser!.displayName}"),
               ),
-            const Icon(Icons.keyboard_arrow_down),
           ],
         ),
       ),
     );
   }
 
-  void _showProfileMenu(BuildContext context) {
-    showModalBottomSheet(
-      context: context,
-      builder: (context) {
-        return Obx(
-          () => Container(
-              decoration: BoxDecoration(
-                color: secondaryColor,
-                border: Border.all(color: Colors.black, width: 1.0),
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              child: Column(
-                children: [
-                  Expanded(
-                    child: ListView.builder(
-                      itemCount: controller.allMentor.length,
-                      itemBuilder: (context, index) {
-                        final mentor = controller.allMentor[index];
-                        return Container(
-                          margin: EdgeInsets.symmetric(
-                              vertical: 5.0, horizontal: 10.0),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black, width: 1.0),
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
-                          child: ListTile(
-                            leading: Icon(Icons.person),
-                            title: Text(
-                              "${index + 1}. ${mentor.MentorName}",
-                            ),
-                            onTap: () {
-                              controller.mentorname.text = mentor.MentorName;
-                              controller.mentorid.text = mentor.MentorId;
-                              controller.mentor = mentor;
-
-                              print(mentor.MentorId);
-
-                              // propertyLayoutController
-                              //     .fetchPropertyLayoutDetials(
-                              //         property.PropertyId);
-                              Get.back();
-                            },
-                          ),
-                        );
-                      },
-                    ),
-                  ),
-                  ListTile(
-                    leading: Icon(Icons.person_add),
-                    title: Text('New Mentor'),
-                    onTap: () {
-                      controller.addMentor();
-                      // Handle creating new profile
-                      // Close the modal
-                    },
-                  ),
-                ],
-              )),
-        );
-      },
-    );
-    // showModalBottomSheet(
-    //   context: context,
-    //   builder: (BuildContext context) {
-    //     return Container(
-    //       color: secondaryColor,
-    //       child: Column(
-    //         mainAxisSize: MainAxisSize.min,
-    //         children: <Widget>[
-    //           ListTile(
-    //             leading: Icon(Icons.person),
-    //             title: Text('Mentor 1'),
-    //             onTap: () {
-    //               // Handle switching profile
-    //               Navigator.pop(context); // Close the modal
-    //             },
-    //           ),
-    //           ListTile(
-    //             leading: Icon(Icons.person_add),
-    //             title: Text('New Mentor'),
-    //             onTap: () {
-    //               controller.addMentor();
-    //               // Handle creating new profile
-    //               // Close the modal
-    //             },
-    //           ),
-    //         ],
-    //       ),
-    //     );
-    //   },
-    // );
-  }
+  // showModalBottomSheet(
+  //   context: context,
+  //   builder: (BuildContext context) {
+  //     return Container(
+  //       color: secondaryColor,
+  //       child: Column(
+  //         mainAxisSize: MainAxisSize.min,
+  //         children: <Widget>[
+  //           ListTile(
+  //             leading: Icon(Icons.person),
+  //             title: Text('Mentor 1'),
+  //             onTap: () {
+  //               // Handle switching profile
+  //               Navigator.pop(context); // Close the modal
+  //             },
+  //           ),
+  //           ListTile(
+  //             leading: Icon(Icons.person_add),
+  //             title: Text('New Mentor'),
+  //             onTap: () {
+  //               controller.addMentor();
+  //               // Handle creating new profile
+  //               // Close the modal
+  //             },
+  //           ),
+  //         ],
+  //       ),
+  //     );
+  //   },
+  // );
 }
 
 class SearchField extends StatelessWidget {

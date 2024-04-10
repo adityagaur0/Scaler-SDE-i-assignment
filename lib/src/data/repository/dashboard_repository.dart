@@ -59,17 +59,111 @@ class DashboardRepository extends GetxController {
     }
   }
 
+  Future<List<StudentModel>> getAllStudent(String mentorID) async {
+    try {
+      // it will return the all the property detials where owner id = auth user id.
+      final snapshot = await _db
+          .collection('Student')
+          .where('MentorId', isEqualTo: mentorID)
+          .get();
+
+      final list = snapshot.docs
+          .map((document) => StudentModel.fromSnapshot(document))
+          .toList();
+      return list;
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const TFormatException();
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
+
+  Future<List<StudentModel>> getTotalStudent() async {
+    try {
+      // it will return the all the property detials where owner id = auth user id.
+      final snapshot = await _db.collection('Student').get();
+
+      final list = snapshot.docs
+          .map((document) => StudentModel.fromSnapshot(document))
+          .toList();
+      return list;
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const TFormatException();
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
+
   Future<void> addStudentRecord(StudentModel student) async {
     try {
       // Generate a new property ID if it's not provided
-      if (student.StudentId.isEmpty) {
-        student.StudentId = _db.collection("Student").doc().id;
-      }
 
       await _db
           .collection("Student")
           .doc(student.StudentId)
           .set(student.toJson());
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const TFormatException();
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
+
+  Future<void> deleteStudentRecord(String StudentId) async {
+    try {
+      await _db.collection("Student").doc(StudentId).delete();
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const TFormatException();
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
+
+  Future<void> updateSingleStudentField(
+      String studentId, Map<String, dynamic> json) async {
+    try {
+      await _db.collection("Student").doc(studentId).update(json);
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const TFormatException();
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
+
+  Future<void> updateSingleUserField(
+      String MentorId, Map<String, dynamic> json) async {
+    try {
+      await _db.collection("Users").doc(MentorId).update(json);
     } on FirebaseAuthException catch (e) {
       throw TFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {

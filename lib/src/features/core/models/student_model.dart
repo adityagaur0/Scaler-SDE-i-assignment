@@ -8,6 +8,7 @@ class StudentModel {
     required this.StudentName,
     required this.emailId,
     required this.MentorId,
+    required this.ENo,
     required this.marks,
     required this.execution,
     required this.idea,
@@ -18,6 +19,7 @@ class StudentModel {
   String StudentName;
   String emailId;
   String MentorId; // Assuming MentorId is a list of student IDs
+  String ENo;
   String marks;
   String idea;
   String viva;
@@ -29,6 +31,7 @@ class StudentModel {
         StudentName: '',
         emailId: '',
         MentorId: '',
+        ENo: '',
         marks: '',
         idea: '',
         execution: '',
@@ -43,6 +46,7 @@ class StudentModel {
       "StudentName": StudentName,
       "emailId": emailId,
       "MentorId": MentorId,
+      "ENo": ENo,
       "marks": marks,
       "idea": idea,
       "viva": viva,
@@ -56,10 +60,11 @@ class StudentModel {
     final data = document.data();
     if (data != null) {
       return StudentModel(
-        StudentId: data['MentorId'] ?? '',
+        StudentId: data['StudentId'] ?? '',
         StudentName: data['StudentName'] ?? '',
         emailId: data['emailId'] ?? '',
         MentorId: data['MentorId'] ?? '',
+        ENo: data['ENo'] ?? '',
         marks: data['marks'] ?? '',
         viva: data['viva'] ?? '',
         idea: data['idea'] ?? '',

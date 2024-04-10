@@ -2,6 +2,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+
 class MentorModel {
   MentorModel({
     required this.MentorId,
@@ -10,7 +11,7 @@ class MentorModel {
     required this.assignedStudents,
     required this.marksSubmitted,
   });
-
+  
   String MentorId;
   String MentorName;
   String emailId;

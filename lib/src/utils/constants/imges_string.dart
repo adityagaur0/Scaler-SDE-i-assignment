@@ -1,6 +1,6 @@
 class TImages {
-  static const String darkAppLogo = "assets/logo/Laserpay_Logo_short.png";
-  static const String lightAppLogo = "assets/logo/Laserpay_Logo_short.png";
+  static const String darkAppLogo = "assets/images/logo.png";
+  static const String lightAppLogo = "assets/images/logo.png";
 
   // -- OnBoarding image
 
@@ -12,7 +12,7 @@ class TImages {
       "assets/images/on_boarding_images/sammy-line-remote-work.gif";
   static const String onBoardingImage4 =
       "assets/images/on_boarding_images/sammy-line-searching.gif";
-
+  static const String kMemoji1 = "assets/images/memoji1.png";
   // -- welcome image
   static const String welocmeImage1 = "assets/images/welcome/image3.png";
 
