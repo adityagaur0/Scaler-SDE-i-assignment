@@ -1,13 +1,11 @@
 import 'package:dashboard/src/common/widgets/circularImage/circular_image.dart';
 import 'package:dashboard/src/common/widgets/loaders/shimmer.dart';
-import 'package:dashboard/src/features/core/controllers/dashbord_controller.dart';
 import 'package:dashboard/src/features/core/controllers/user_controller/user_controller.dart';
 import 'package:dashboard/src/utils/constants/imges_string.dart';
 import 'package:dashboard/src/utils/device/responsive.dart';
 import 'package:dashboard/src/utils/constants/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class Header extends StatelessWidget {
@@ -213,7 +211,7 @@ class ProfileCard extends StatelessWidget {
             }),
             if (!Responsive.isMobile(context))
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: defaultPadding / 2),
+                padding: const EdgeInsets.symmetric(horizontal: defaultPadding / 2),
                 child: Text("${_auth.currentUser!.displayName}"),
               ),
           ],

@@ -39,7 +39,7 @@ class Menu extends StatelessWidget {
     return CupertinoScrollbar(
       child: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 5,
           ),
           GestureDetector(
@@ -48,8 +48,8 @@ class Menu extends StatelessWidget {
                 // moneycontroller.selectedDate.value = "Current Month";
                 Get.back();
               },
-              child: Text("All")),
-          SizedBox(
+              child: const Text("All")),
+          const SizedBox(
             height: 5,
           ),
           Expanded(
@@ -67,7 +67,7 @@ class Menu extends StatelessWidget {
 
                       Get.back();
                     },
-                    trailing: Icon(Icons.arrow_right),
+                    trailing: const Icon(Icons.arrow_right),
                   ),
                 );
               },

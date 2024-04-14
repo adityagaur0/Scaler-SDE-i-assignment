@@ -29,17 +29,17 @@ class TFormatter {
 
   static String formatOrdinal(int value) {
     if (value % 100 >= 11 && value % 100 <= 13) {
-      return '$value' + 'th'; // If value ends with 11, 12, or 13, use 'th'
+      return '$value' 'th'; // If value ends with 11, 12, or 13, use 'th'
     }
     switch (value % 10) {
       case 1:
-        return '$value' + 'st';
+        return '$value' 'st';
       case 2:
-        return '$value' + 'nd';
+        return '$value' 'nd';
       case 3:
-        return '$value' + 'rd';
+        return '$value' 'rd';
       default:
-        return '$value' + 'th';
+        return '$value' 'th';
     }
   }
 

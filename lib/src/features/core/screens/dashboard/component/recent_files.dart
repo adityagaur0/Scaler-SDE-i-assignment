@@ -1,14 +1,11 @@
 import 'package:dashboard/src/features/core/controllers/dashbord_controller.dart';
 import 'package:dashboard/src/features/core/controllers/update_student_controller.dart';
 import 'package:dashboard/src/features/core/controllers/user_controller/user_controller.dart';
-import 'package:dashboard/src/features/core/models/RecentFile.dart';
 import 'package:dashboard/src/features/core/models/student_model.dart';
 import 'package:dashboard/src/features/core/screens/dashboard/widget/filter.dart';
 import 'package:dashboard/src/utils/constants/constants.dart';
 import 'package:dashboard/src/utils/device/responsive.dart';
-import 'package:dashboard/src/utils/validators/validation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class StudentInfo extends StatelessWidget {
@@ -39,7 +36,7 @@ class StudentInfo extends StatelessWidget {
                 width: 20,
               ),
               const Spacer(),
-              Filter(),
+              const Filter(),
             ],
           ),
           Obx(
@@ -49,7 +46,7 @@ class StudentInfo extends StatelessWidget {
             ),
           ),
           const SizedBox(height: defaultPadding),
-          Expanded(child: PeopleListWidget()),
+          const Expanded(child: PeopleListWidget()),
         ],
       ),
     );
@@ -57,7 +54,7 @@ class StudentInfo extends StatelessWidget {
 }
 
 class PeopleListWidget extends StatelessWidget {
-  PeopleListWidget({Key? key});
+  const PeopleListWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -137,28 +134,28 @@ class PeopleListWidget extends StatelessWidget {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(": " + student.StudentName,
+                                Text(": ${student.StudentName}",
                                     overflow: TextOverflow.ellipsis,
                                     style:
                                         Theme.of(context).textTheme.bodyMedium),
-                                Text(": " + student.emailId,
+                                Text(": ${student.emailId}",
                                     style:
                                         Theme.of(context).textTheme.bodyMedium),
-                                Text(": " + student.ENo,
+                                Text(": ${student.ENo}",
                                     style:
                                         Theme.of(context).textTheme.bodyMedium),
-                                Text(": " + student.marks + " / 30",
+                                Text(": ${student.marks} / 30",
                                     style:
                                         Theme.of(context).textTheme.bodyMedium),
-                                Text(": " + student.idea + " / 10",
+                                Text(": ${student.idea} / 10",
                                     overflow: TextOverflow.ellipsis,
                                     style:
                                         Theme.of(context).textTheme.bodyMedium),
-                                Text(": " + student.viva + " / 10",
+                                Text(": ${student.viva} / 10",
                                     overflow: TextOverflow.ellipsis,
                                     style:
                                         Theme.of(context).textTheme.bodyMedium),
-                                Text(": " + student.execution + " / 10",
+                                Text(": ${student.execution} / 10",
                                     overflow: TextOverflow.ellipsis,
                                     style:
                                         Theme.of(context).textTheme.bodyMedium)

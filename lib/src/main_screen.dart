@@ -1,15 +1,16 @@
 import 'package:dashboard/src/features/core/controllers/dashbord_controller.dart';
 import 'package:dashboard/src/features/core/controllers/user_controller/user_controller.dart';
 import 'package:dashboard/src/features/core/screens/dashboard/dashboard_screen.dart';
-import 'package:dashboard/src/utils/constants/constants.dart';
+import 'package:dashboard/src/utils/api/send_email.dart';
 import 'package:dashboard/src/utils/device/responsive.dart';
 import 'package:dashboard/src/common/widgets/side_menu.dart';
 import 'package:dashboard/src/utils/validators/validation.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class MainScreen extends StatelessWidget {
+  const MainScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(DashboardController());
@@ -18,14 +19,15 @@ class MainScreen extends StatelessWidget {
       floatingActionButton:
           Column(mainAxisAlignment: MainAxisAlignment.end, children: [
         FloatingActionButton(
+          heroTag: "btn1",
           onPressed: () {
             if (UserController.instance.user.value.marksSubmitted == false) {
-              print("${controller.allStudent.length} " + "ADDD");
+              print("${controller.allStudent.length} " "ADDD");
               if (controller.allStudent.length < 4) {
                 showModalBottomSheet(
                   isDismissible: true,
                   context: context,
-                  builder: (context) => AddStudentBottomSheet(),
+                  builder: (context) => const AddStudentBottomSheet(),
                 );
               } else {
                 ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
@@ -34,9 +36,9 @@ class MainScreen extends StatelessWidget {
                 ));
               }
             } else {
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                 content: Text("Marks already submitted"),
-                duration: const Duration(seconds: 1),
+                duration: Duration(seconds: 1),
               ));
             }
           },
@@ -47,6 +49,7 @@ class MainScreen extends StatelessWidget {
           height: 10,
         ),
         FloatingActionButton(
+          heroTag: "btn2",
           onPressed: () {
             final anyUnassigned = controller.allStudent.any((student) =>
                 student.idea == "Unassigned Marks" &&
@@ -62,8 +65,9 @@ class MainScreen extends StatelessWidget {
                   context: context,
                   builder: (BuildContext context) {
                     return AlertDialog(
-                      title: Text('Lock Marks Confirmation'),
-                      content: Text('Are you sure you want to lock the marks?'),
+                      title: const Text('Lock Marks Confirmation'),
+                      content: const Text(
+                          'Are you sure you want to lock the marks?'),
                       actions: <Widget>[
                         TextButton(
                           onPressed: () {
@@ -71,14 +75,14 @@ class MainScreen extends StatelessWidget {
                             // Lock the marks
                             // You can add your logic to lock the marks here
                           },
-                          child: Text('Yes'),
+                          child: const Text('Yes'),
                         ),
                         TextButton(
                           onPressed: () {
                             Get.back();
                             // Do nothing, dismiss the dialog
                           },
-                          child: Text('No'),
+                          child: const Text('No'),
                         ),
                       ],
                     );
@@ -88,17 +92,18 @@ class MainScreen extends StatelessWidget {
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                   content: controller.allStudent.length < 3
                       ? Text(
-                          'You need to add ${3 - controller.allStudent.length} more student')
+                          'You need to add ${3 - controller.allStudent.length} student')
                       : anyUnassigned
-                          ? Text("You need to assign marks to all students")
-                          : Text("error"),
+                          ? const Text(
+                              "You need to assign marks to all students")
+                          : const Text("error"),
                   duration: const Duration(seconds: 1),
                 ));
               }
             } else {
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                 content: Text("Marks already submitted"),
-                duration: const Duration(seconds: 1),
+                duration: Duration(seconds: 1),
               ));
             }
           },
@@ -112,11 +117,65 @@ class MainScreen extends StatelessWidget {
         const SizedBox(
           height: 10,
         ),
-        // FloatingActionButton(
-        //   onPressed: () {},
-        //   backgroundColor: Colors.blueAccent,
-        //   child: const Icon(Icons.picture_as_pdf),
-        // ),
+        FloatingActionButton(
+          heroTag: "btn4",
+          onPressed: () {
+            if (UserController.instance.user.value.marksSubmitted) {
+              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                content: Text("Upcoming feature"),
+                duration: Duration(seconds: 1),
+              ));
+              // SendEmail().sendEmail(
+              //     student_name: "aditya",
+              //     enrollment_no: "001",
+              //     student_email: "adityakumargaur0@gmail.com",
+              //     total_marks: "10",
+              //     viva: "3",
+              //     idea: "2",
+              //     execution: "5",
+              //     mentor_name: "scalar",
+              //     mentor_email: "adityakumargaur2020@gmail.com");
+            } else {
+              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                content: Text("Please lock the marks first"),
+                duration: Duration(seconds: 1),
+              ));
+            }
+          },
+          backgroundColor: Colors.blueAccent,
+          child: const Icon(Icons.email),
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        FloatingActionButton(
+          heroTag: "btn3",
+          onPressed: () {
+            if (UserController.instance.user.value.marksSubmitted) {
+              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                content: Text("Upcoming feature"),
+                duration: Duration(seconds: 1),
+              ));
+              // SendEmail().sendEmail(
+              //     student_name: "aditya",
+              //     enrollment_no: "001",
+              //     student_email: "adityakumargaur0@gmail.com",
+              //     total_marks: "10",
+              //     viva: "3",
+              //     idea: "2",
+              //     execution: "5",
+              //     mentor_name: "scalar",
+              //     mentor_email: "adityakumargaur2020@gmail.com");
+            } else {
+              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                content: Text("Please lock the marks first"),
+                duration: Duration(seconds: 1),
+              ));
+            }
+          },
+          backgroundColor: Colors.blueAccent,
+          child: const Icon(Icons.picture_as_pdf),
+        ),
       ]),
       body: SafeArea(
         child: Row(
@@ -129,7 +188,7 @@ class MainScreen extends StatelessWidget {
                 // and it takes 1/6 part of the screen
                 child: SideMenu(),
               ),
-            Expanded(
+            const Expanded(
               // It takes 5/6 part of the screen
               flex: 5,
               child: DashboardScreen(),
@@ -142,6 +201,8 @@ class MainScreen extends StatelessWidget {
 }
 
 class AddStudentBottomSheet extends StatelessWidget {
+  const AddStudentBottomSheet({super.key});
+
   @override
   Widget build(BuildContext context) {
     final controller = DashboardController.instance;

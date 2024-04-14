@@ -1,4 +1,3 @@
-import 'package:dashboard/src/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:dashboard/src/utils/constants/colour.dart';
 

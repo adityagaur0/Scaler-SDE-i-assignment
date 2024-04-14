@@ -1,6 +1,5 @@
 import 'package:dashboard/src/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({
@@ -47,7 +46,7 @@ class LoginForm extends StatelessWidget {
                 labelText: "Password",
                 suffixIcon: IconButton(
                   onPressed: () {}, // toggling the value again and again
-                  icon: Icon(Icons.remove_red_eye),
+                  icon: const Icon(Icons.remove_red_eye),
                 ),
               ),
             ),

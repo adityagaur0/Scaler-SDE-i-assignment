@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 /* -- List of all colors --*/
 
-const tPrimaryColor = const Color.fromARGB(213, 98, 1, 136);
+const tPrimaryColor = Color.fromARGB(213, 98, 1, 136);
 
 const tbaseColoe = Color.fromARGB(177, 146, 143, 189); // -- HOMEPAGE COLORS
 const tHomePageGradientStartColor = Color(0xFFB4E0FF);
 const tHomePageGradientEndColor = Color(0xFFF3D0FF);
 const tHomePageBackgroundColor2 = Color.fromRGBO(255, 255, 255, 1);
 const tHomePageBackgroundColor3 = Colors.transparent;
-final tHomePageColor4 = Color(0xFFffffff);
+const tHomePageColor4 = Color(0xFFffffff);
 
 // -- HomeScreen
 //1. container colors
@@ -28,8 +28,8 @@ const tSubscriptionTitle = Colors.black; // Color.fromRGBO(218, 170, 121, 1);
 const tPencilColor = tRentReceived;
 const tEditProfileButtonColor = tRentReceived;
 const tEditProfileButtonTextColor = Colors.black;
-const tmenuIconColorLight = const Color.fromARGB(213, 98, 1, 136);
-const tmenuIconColorDark = const Color.fromARGB(213, 98, 1, 136);
+const tmenuIconColorLight = Color.fromARGB(213, 98, 1, 136);
+const tmenuIconColorDark = Color.fromARGB(213, 98, 1, 136);
 const tmenuIconsContainerColor = tSubscription;
 const tmenuTextColor = Colors.black;
 
@@ -40,19 +40,19 @@ final tdefaultGradient = LinearGradient(
   colors: [
     // category.color.withOpacity(0.55),
     // category.color.withOpacity(0.9),
-    Color.fromRGBO(234, 141, 141, 1).withOpacity(0.5),
-    Color.fromRGBO(168, 144, 254, 1).withOpacity(0.5),
+    const Color.fromRGBO(234, 141, 141, 1).withOpacity(0.5),
+    const Color.fromRGBO(168, 144, 254, 1).withOpacity(0.5),
   ],
   begin: Alignment.topLeft,
   end: Alignment.bottomRight,
 );
 
-final tforeground = Color.fromRGBO(234, 141, 141, 1).withOpacity(0.5);
-final tbackground = Color.fromRGBO(168, 144, 254, 1).withOpacity(0.5);
+final tforeground = const Color.fromRGBO(234, 141, 141, 1).withOpacity(0.5);
+final tbackground = const Color.fromRGBO(168, 144, 254, 1).withOpacity(0.5);
 final tFloatingActionButtonColor = Color.alphaBlend(tforeground, tbackground);
 
 //people
-final textaddcontact = Colors.black;
+const textaddcontact = Colors.black;
 
 class TColors {
   // App theme colors

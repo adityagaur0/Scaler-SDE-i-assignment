@@ -1,5 +1,3 @@
-import 'package:dashboard/src/features/core/screens/dashboard/component/chart.dart';
-import 'package:dashboard/src/features/core/screens/dashboard/component/storage_info_card.dart';
 import 'package:dashboard/src/utils/constants/constants.dart';
 import 'package:flutter/material.dart';
 
