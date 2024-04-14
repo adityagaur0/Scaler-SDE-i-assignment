@@ -19,7 +19,7 @@ class FormDivider extends StatelessWidget {
       children: [
         Flexible(
           child: Divider(
-            color: dark ? TColors.darkGrey : Color.fromARGB(255, 222, 220, 220),
+            color: dark ? TColors.darkGrey : const Color.fromARGB(255, 222, 220, 220),
             thickness: 0.5,
             indent: 60,
             endIndent: 5,
@@ -32,7 +32,7 @@ class FormDivider extends StatelessWidget {
         ),
         Flexible(
           child: Divider(
-            color: dark ? TColors.darkGrey : Color.fromARGB(255, 222, 220, 220),
+            color: dark ? TColors.darkGrey : const Color.fromARGB(255, 222, 220, 220),
             thickness: 0.5,
             indent: 5,
             endIndent: 60,

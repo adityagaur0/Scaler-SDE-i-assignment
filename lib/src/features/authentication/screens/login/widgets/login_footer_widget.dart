@@ -8,7 +8,7 @@ class LoginFooterWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // final dark = THelperFunctions.isDarkMode(context);
-    return Column(
+    return const Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         // const SizedBox(

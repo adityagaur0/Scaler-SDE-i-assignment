@@ -8,7 +8,7 @@ const tButtonHeight = 15.0;
 const tFormHeight = 30.0;
 const tIConSize = 35.0;
 const tdefaultPadingHorizontal = EdgeInsets.symmetric(horizontal: 15);
-final tdefaultPadingHorizontalSize = 15.0;
+const tdefaultPadingHorizontalSize = 15.0;
 final tdefaultBorderRadius = BorderRadius.circular(20);
 final tdefaultSizedBoxAboveHt = 20.h;
 

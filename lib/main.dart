@@ -1,13 +1,11 @@
 import 'package:dashboard/firebase_options.dart';
 import 'package:dashboard/src/bindings/general_bindings.dart';
 import 'package:dashboard/src/data/authentication_repository/authentication_repository.dart';
-import 'package:dashboard/src/features/authentication/screens/login/sign_in.dart';
 import 'package:dashboard/src/utils/theme/theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:get/route_manager.dart';
 import 'package:get_storage/get_storage.dart';
 
 void main() async {
@@ -46,8 +44,8 @@ class MyApp extends StatelessWidget {
       //   canvasColor: secondaryColor,
       // ),
       // home: MainScreen(),
-      home: Scaffold(
-        body: Text(key: const Key('text'), 'Hello World'),
+      home: const Scaffold(
+        body: Text(key: Key('text'), 'Hello World'),
       ),
     );
   }

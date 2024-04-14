@@ -139,7 +139,7 @@ class DashboardController extends GetxController {
 
 //------------------------STUDENT-----------------------//
   Future<void> fetchStudentDetials() async {
-    print("${_auth.currentUser!.uid}");
+    print(_auth.currentUser!.uid);
     try {
       // show loader
       isLoading.value = true;
@@ -169,7 +169,7 @@ class DashboardController extends GetxController {
   }
 
   Future<void> fetchALLStudentDetials() async {
-    print("${_auth.currentUser!.uid}");
+    print(_auth.currentUser!.uid);
     try {
       // show loader
       isLoading.value = true;

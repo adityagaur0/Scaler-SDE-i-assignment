@@ -44,7 +44,7 @@ class UserModel {
     String lastName = nameParts.length > 1 ? nameParts[1].toLowerCase() : "";
     String camelCaseUsername =
         "$firstName$lastName"; // Combine first and last name
-    String usernameWithPrefix = "$camelCaseUsername"; //  prefix
+    String usernameWithPrefix = camelCaseUsername; //  prefix
     return usernameWithPrefix;
   }
 

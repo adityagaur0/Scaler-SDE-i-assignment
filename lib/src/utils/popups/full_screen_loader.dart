@@ -1,4 +1,3 @@
-import 'package:dashboard/src/common/widgets/loaders/animation_loader.dart';
 import 'package:dashboard/src/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -26,7 +25,7 @@ class TFullScreenLoader {
                 : Colors.white,
             borderRadius: BorderRadius.circular(10),
           ),
-          child: Column(
+          child: const Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(

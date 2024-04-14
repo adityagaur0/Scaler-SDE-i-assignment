@@ -54,10 +54,10 @@ class AuthenticationRepository extends GetxController {
 
     if (user != null) {
       if (user.emailVerified) {
-        print("screenredirect.." + authUser.toString());
-        Get.offAll(() => MainScreen());
+        print("screenredirect..$authUser");
+        Get.offAll(() => const MainScreen());
       } else {
-        Get.offAll(() => SignIn());
+        Get.offAll(() => const SignIn());
       }
     } else {
       //Local Storage

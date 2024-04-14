@@ -8,7 +8,6 @@ import 'package:dashboard/src/utils/constants/sizes.dart';
 import 'package:dashboard/src/utils/device/responsive.dart';
 import 'package:dashboard/src/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class SignIn extends StatelessWidget {
   const SignIn({super.key});
