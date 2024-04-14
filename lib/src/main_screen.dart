@@ -121,16 +121,20 @@ class MainScreen extends StatelessWidget {
           heroTag: "btn4",
           onPressed: () {
             if (UserController.instance.user.value.marksSubmitted) {
-              SendEmail().sendEmail(
-                  student_name: "aditya",
-                  enrollment_no: "001",
-                  student_email: "adityakumargaur0@gmail.com",
-                  total_marks: "10",
-                  viva: "3",
-                  idea: "2",
-                  execution: "5",
-                  mentor_name: "scalar",
-                  mentor_email: "adityakumargaur2020@gmail.com");
+              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                content: Text("Upcoming feature"),
+                duration: Duration(seconds: 1),
+              ));
+              // SendEmail().sendEmail(
+              //     student_name: "aditya",
+              //     enrollment_no: "001",
+              //     student_email: "adityakumargaur0@gmail.com",
+              //     total_marks: "10",
+              //     viva: "3",
+              //     idea: "2",
+              //     execution: "5",
+              //     mentor_name: "scalar",
+              //     mentor_email: "adityakumargaur2020@gmail.com");
             } else {
               ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                 content: Text("Please lock the marks first"),
@@ -146,7 +150,29 @@ class MainScreen extends StatelessWidget {
         ),
         FloatingActionButton(
           heroTag: "btn3",
-          onPressed: () {},
+          onPressed: () {
+            if (UserController.instance.user.value.marksSubmitted) {
+              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                content: Text("Upcoming feature"),
+                duration: Duration(seconds: 1),
+              ));
+              // SendEmail().sendEmail(
+              //     student_name: "aditya",
+              //     enrollment_no: "001",
+              //     student_email: "adityakumargaur0@gmail.com",
+              //     total_marks: "10",
+              //     viva: "3",
+              //     idea: "2",
+              //     execution: "5",
+              //     mentor_name: "scalar",
+              //     mentor_email: "adityakumargaur2020@gmail.com");
+            } else {
+              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                content: Text("Please lock the marks first"),
+                duration: Duration(seconds: 1),
+              ));
+            }
+          },
           backgroundColor: Colors.blueAccent,
           child: const Icon(Icons.picture_as_pdf),
         ),
